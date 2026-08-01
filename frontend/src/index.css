@@ -2,16 +2,43 @@
 @tailwind components;
 @tailwind utilities;
 
-
-*{
-    padding: 0;
-    margin : 0;
-    box-sizing:border-box;
+@layer base {
+  html {
     scroll-behavior: smooth;
-}
-body{
+  }
+  
+  body {
+    @apply font-inter bg-surface-50 text-slate-900;
     min-height: 100vh;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-outfit font-semibold tracking-tight;
+  }
 }
+
+@layer utilities {
+  .glass-panel {
+    @apply bg-white/70 backdrop-blur-md border border-white/20 shadow-glass;
+  }
+  
+  .glass-dark {
+    @apply bg-slate-900/80 backdrop-blur-lg border border-white/10 shadow-glass text-white;
+  }
+  
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-orange-500 to-rose-500;
+  }
+  
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+}
+
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none; 
@@ -22,35 +49,26 @@ input[type="number"] {
     -moz-appearance: textfield; /* Remove default appearance */
 }
 
-@keyframes fadein {
-    0%{
-        opacity: 0;
-    }
-    100%{
-        opacity: 1;
-    }
+/* Custom premium scrollbar for the main window */
+::-webkit-scrollbar {
+  width: 8px;
 }
-
-.animate-fadein {
-    animation: fadein 1.5s;
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
 }
-
-.explore-menu-list::-webkit-scrollbar{
-    display: none;
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
 }
-
-.explore-menu-list {
-    -ms-overflow-style: none; 
-    scrollbar-width: none; 
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
 }
-  
-
 
 .spinner {
    width: 100px;
    height: 100px;
    border-radius: 50%;
-   background: conic-gradient(#0000 10%,#dfac05);
+   background: conic-gradient(#0000 10%, #f97316);
    -webkit-mask: radial-gradient(farthest-side,#0000 calc(100% - 9px),#000 0);
    animation: spinner-zp9dbg 1s infinite linear;
 }
@@ -61,36 +79,6 @@ input[type="number"] {
    }
 }
 
-
-
-
-
-
-/* Hide menu items on screens smaller than 768px */
-@media (max-width: 768px) {
-    .nav-links {
-      display: none; /* Hides the menu items */
-    }
-    .navbar-container {
-      display: flex; /* Adjusts the layout for small screens */
-      align-items: center;
-    }
-  }
-
-  @media(max-width:1400px){
-    .RightContent {
-        padding-right: 40px;
-    }
-    .DropDownContainer {
-        width: 100px;
-    }
-  }
-
-
-  body.overflow-hidden {
+body.overflow-hidden {
     overflow-y: hidden;
 }
-  
-
-
-

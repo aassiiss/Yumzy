@@ -8,7 +8,7 @@ import Orders from "./pages/Orders";
 import {ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 function App() {
-  const URL='https://yumzy-backend.onrender.com'
+  const URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:5000';
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar/>

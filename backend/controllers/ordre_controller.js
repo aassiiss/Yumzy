@@ -4,7 +4,7 @@ const Stripe = require("stripe");
 const stripe = Stripe(process.env.STRIPE_SECRET_KEY);
 
 exports.placeOrder = async (req, res) => {
-    const frontend_url = "https://yumzy-frontend-cmii.onrender.com";
+    const frontend_url = process.env.FRONTEND_URL || "http://localhost:5173";
 
     try {
         // Validate input data

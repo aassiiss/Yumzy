@@ -20,7 +20,7 @@ const Header = () => {
 
       {/* Content */}
       <div className='relative z-10 px-6 max-w-7xl mx-auto w-full pt-16'>
-        <div className='max-w-[700px] flex flex-col gap-6'>
+        <div className='max-w-[700px] flex flex-col gap-6 -ml-1 md:-ml-3'>
           {/* Badge */}
           <motion.div 
             initial={{ opacity: 0, y: 20 }}

@@ -5,9 +5,9 @@ import { motion } from 'framer-motion';
 import { assets } from '../assets/frontend_assets/assets';
 
 const teamMembers = [
-  { name: 'Aditya Verma', role: 'Head Chef & Co-founder', img: 'https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?auto=format&fit=crop&q=80&w=400&h=400', desc: 'Trained at Le Cordon Bleu Paris with 14 years of Michelin-star kitchen experience.' },
-  { name: 'Nimish Rauniyar', role: 'CEO', img: assets.nimish, desc: 'Ex-Zomato product lead who redesigned ordering for 10 million users.' },
-  { name: 'Aashish Sah', role: 'Operations Director', img: assets.aashish, desc: 'Built delivery logistics networks across 3 unicorn startups in South Asia.' },
+  { name: 'Shreeji Regmi', role: 'Head Chef & Co-founder', img: assets.shreeji, desc: 'Culinary enthusiast and the creative mind behind our diverse, mouth-watering menu selections.' },
+  { name: 'Nimish Rauniyar', role: 'CEO', img: assets.nimish, desc: 'Passionate about creating seamless food delivery experiences and leading our product strategy.' },
+  { name: 'Aashish Sah', role: 'Operations Director', img: assets.aashish, desc: 'Logistics and operations expert dedicated to ensuring fast, reliable delivery every single time.' },
 ];
 
 const values = [

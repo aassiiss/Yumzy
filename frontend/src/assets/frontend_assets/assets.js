@@ -71,6 +71,7 @@ import BackgroundImage from './restaurantBI.jpg'
 import headerBI from './headerBI.jpg'
 import aashish from './aashish.png'
 import nimish from './nimish.png'
+import shreeji from './shreeji.png'
 export const assets = {
     logo,
     basket_icon,
@@ -95,7 +96,8 @@ export const assets = {
     BackgroundImage,
     headerBI,
     aashish,
-    nimish
+    nimish,
+    shreeji
 }
 
 export const menu_list = [

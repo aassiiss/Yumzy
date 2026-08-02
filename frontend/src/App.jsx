@@ -10,6 +10,8 @@ import { StoreContext } from "./context/StoreContext";
 import Verify from "./pages/Verify";
 import { useContext } from "react";
 import MyOrders from "./pages/MyOrders";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import Menu from "./pages/Menu";
 import About from "./pages/About";
@@ -21,6 +23,7 @@ function App() {
   const { login } = useContext(StoreContext);
   return (
     <>
+      <ToastContainer position="top-right" autoClose={3000} />
       {login ? (<Login/>) : (<></>)}
       <div className="min-h-screen">
         <Navbar/>

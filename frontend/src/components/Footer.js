@@ -1,9 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { assets } from '../assets/frontend_assets/assets';
 import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { toast } from 'react-toastify';
 
 const Footer = () => {
+  const [email, setEmail] = useState('');
+
+  const handleSubscribe = (e) => {
+    e.preventDefault();
+    if (email.trim() === '') {
+      toast.error("Please enter a valid email address.");
+      return;
+    }
+    toast.success("Thanks for subscribing to our newsletter!");
+    setEmail('');
+  };
+
   return (
     <footer className='bg-slate-900 text-slate-300 w-full pt-20 pb-10 border-t border-slate-800' id='Contact'>
       <div className='max-w-7xl mx-auto px-6'>
@@ -32,13 +44,15 @@ const Footer = () => {
           <div className='lg:w-1/3 bg-slate-800/50 rounded-3xl p-8 border border-slate-700/50'>
             <h3 className='text-white font-outfit text-xl font-semibold mb-3'>Subscribe to our newsletter</h3>
             <p className='text-slate-400 text-sm mb-6 font-inter'>Get exclusive offers, recipe tips, and first access to new premium restaurants.</p>
-            <form className='flex gap-2' onSubmit={(e) => e.preventDefault()}>
+            <form className='flex gap-2' onSubmit={handleSubscribe}>
               <input 
                 type="email" 
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 placeholder="Enter your email" 
                 className='w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-orange-500 transition-colors text-white placeholder-slate-500'
               />
-              <button className='bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded-xl font-medium transition-colors'>
+              <button type="submit" className='bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded-xl font-medium transition-colors'>
                 Subscribe
               </button>
             </form>

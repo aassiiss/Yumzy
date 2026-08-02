@@ -36,13 +36,16 @@ const Navbar = () => {
     { name: "About", path: "/about" }
   ];
 
+  const isDarkHeader = location.pathname === "/" || location.pathname === "/about";
+  const useLightText = isDarkHeader && !scrolled;
+
   return (
     <motion.nav 
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ type: "spring", stiffness: 100, damping: 20 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? "bg-white/80 backdrop-blur-lg shadow-premium border-b border-gray-100 py-3" : "bg-transparent py-5"
+        scrolled ? "bg-white/85 backdrop-blur-xl shadow-premium border-b border-gray-100 py-3" : "bg-transparent py-5"
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
@@ -54,7 +57,7 @@ const Navbar = () => {
           <img
             src={assets.logo}
             alt="Yumzy Logo"
-            className="w-32 md:w-36 transition-transform duration-300 group-hover:scale-105"
+            className={`w-32 md:w-36 transition-all duration-300 group-hover:scale-105 ${useLightText ? "brightness-0 invert opacity-100" : ""}`}
           />
         </div>
 
@@ -66,7 +69,9 @@ const Navbar = () => {
                 to={link.path} 
                 className={({ isActive }) => `
                   relative font-medium text-[15px] transition-colors duration-300
-                  ${isActive ? "text-orange-600 font-semibold" : "text-gray-600 hover:text-orange-500"}
+                  ${isActive 
+                    ? (useLightText ? "text-orange-400 font-semibold" : "text-orange-600 font-semibold") 
+                    : (useLightText ? "text-slate-300 hover:text-white" : "text-gray-600 hover:text-orange-500")}
                 `}
               >
                 {link.name}
@@ -82,7 +87,7 @@ const Navbar = () => {
             </li>
           ))}
           <li>
-            <a href="#Contact" className="font-medium text-[15px] text-gray-600 hover:text-orange-500 transition-colors duration-300">
+            <a href="#Contact" className={`font-medium text-[15px] transition-colors duration-300 ${useLightText ? "text-slate-300 hover:text-white" : "text-gray-600 hover:text-orange-500"}`}>
               Contact
             </a>
           </li>
@@ -97,9 +102,9 @@ const Navbar = () => {
               if (token) navigate("/cart");
               else { alert("Please sign in to access the cart."); setlogin(true); }
             }}
-            className="relative p-2 rounded-full hover:bg-gray-100 transition-colors"
+            className={`relative p-2 rounded-full transition-colors ${useLightText ? "hover:bg-white/10" : "hover:bg-gray-100"}`}
           >
-            <img src={assets.basket_icon} alt="Cart" className="w-6 h-6 opacity-80" />
+            <img src={assets.basket_icon} alt="Cart" className={`w-6 h-6 opacity-80 ${useLightText ? "brightness-0 invert" : ""}`} />
             {token && (
               <span className="absolute top-1 right-1 w-2.5 h-2.5 bg-orange-500 rounded-full border-2 border-white"></span>
             )}
@@ -109,7 +114,9 @@ const Navbar = () => {
           {!token ? (
             <button
               onClick={() => setlogin(true)}
-              className="hidden md:block bg-slate-900 text-white font-medium px-6 py-2.5 rounded-full hover:bg-orange-500 transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
+              className={`hidden md:block font-medium px-6 py-2.5 rounded-full transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5 ${
+                useLightText ? "bg-white text-slate-900 hover:bg-orange-500 hover:text-white" : "bg-slate-900 text-white hover:bg-orange-500"
+              }`}
             >
               Sign In
             </button>
@@ -117,12 +124,12 @@ const Navbar = () => {
             <div className="relative">
               <button 
                 onClick={toggleMenuVisibility}
-                className="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center border-2 border-transparent hover:border-orange-200 transition-all focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2"
+                className={`w-10 h-10 rounded-full flex items-center justify-center border-2 border-transparent hover:border-orange-200 transition-all focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 ${useLightText ? "bg-white/10 hover:bg-white/20" : "bg-slate-100"}`}
               >
                 <img
                   src={assets.profile_icon}
                   alt="Profile"
-                  className="w-5 h-5 opacity-70"
+                  className={`w-5 h-5 opacity-70 ${useLightText ? "brightness-0 invert" : ""}`}
                 />
               </button>
               

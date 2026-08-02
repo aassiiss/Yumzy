@@ -19,8 +19,8 @@ const Header = () => {
       <div className='absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent opacity-80'></div>
 
       {/* Content */}
-      <div className='relative z-10 px-6 md:px-12 lg:px-20 max-w-7xl mx-auto w-full pt-16'>
-        <div className='max-w-[700px] flex flex-col gap-8'>
+      <div className='relative z-10 px-6 max-w-7xl mx-auto w-full pt-16'>
+        <div className='max-w-[700px] flex flex-col gap-6'>
           {/* Badge */}
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
@@ -76,7 +76,7 @@ const Header = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 1.2 }}
-            className="flex items-center gap-6 mt-8 border-t border-white/10 pt-8"
+            className="flex items-center gap-6 mt-6 border-t border-white/10 pt-6"
           >
             <div className="flex -space-x-4">
               {['https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&q=80', 
@@ -87,12 +87,15 @@ const Header = () => {
               ))}
             </div>
             <div>
-              <div className="flex gap-1 mb-1">
-                {[...Array(5)].map((_, i) => (
-                  <svg key={i} className="w-4 h-4 text-orange-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                ))}
+              <div className="flex items-center gap-2 mb-1">
+                <div className="flex gap-1">
+                  {[...Array(5)].map((_, i) => (
+                    <svg key={i} className="w-4 h-4 text-orange-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                  ))}
+                </div>
+                <span className="text-white font-bold text-sm">Rating 4.6</span>
               </div>
-              <p className="text-slate-300 text-sm font-medium font-inter">Trusted by 50,000+ food lovers</p>
+              <p className="text-slate-300 text-sm font-medium font-inter">Trusted by 5,000+</p>
             </div>
           </motion.div>
         </div>

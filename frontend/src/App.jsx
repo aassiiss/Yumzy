@@ -13,6 +13,7 @@ import MyOrders from "./pages/MyOrders";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ScrollToTop from "./components/ScrollToTop";
+import FloatingCart from "./components/FloatingCart";
 
 import Menu from "./pages/Menu";
 import About from "./pages/About";
@@ -26,6 +27,7 @@ function App() {
     <>
       <ScrollToTop />
       <ToastContainer position="top-right" autoClose={3000} />
+      <FloatingCart />
       {login ? (<Login/>) : (<></>)}
       <div className="min-h-screen">
         <Navbar/>

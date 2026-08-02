@@ -69,6 +69,8 @@ import bread_menu from './Breads.png'
 import drinks_menu from './Drinks.png'
 import BackgroundImage from './restaurantBI.jpg'
 import headerBI from './headerBI.jpg'
+import aashish from './aashish.png'
+import nimish from './nimish.png'
 export const assets = {
     logo,
     basket_icon,
@@ -91,8 +93,9 @@ export const assets = {
     parcel_icon,
     cross,
     BackgroundImage,
-    headerBI
-
+    headerBI,
+    aashish,
+    nimish
 }
 
 export const menu_list = [

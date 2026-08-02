@@ -2,10 +2,12 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
+import { assets } from '../assets/frontend_assets/assets';
+
 const teamMembers = [
   { name: 'Aditya Verma', role: 'Head Chef & Co-founder', img: 'https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?auto=format&fit=crop&q=80&w=400&h=400', desc: 'Trained at Le Cordon Bleu Paris with 14 years of Michelin-star kitchen experience.' },
-  { name: 'Sneha Kapoor', role: 'Chief Experience Officer', img: 'https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&q=80&w=400&h=400', desc: 'Ex-Zomato product lead who redesigned ordering for 10 million users.' },
-  { name: 'Rahul Gupta', role: 'Operations Director', img: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=400&h=400', desc: 'Built delivery logistics networks across 3 unicorn startups in South Asia.' },
+  { name: 'Nimish Rauniyar', role: 'CEO', img: assets.nimish, desc: 'Ex-Zomato product lead who redesigned ordering for 10 million users.' },
+  { name: 'Aashish Sah', role: 'Operations Director', img: assets.aashish, desc: 'Built delivery logistics networks across 3 unicorn startups in South Asia.' },
 ];
 
 const values = [
@@ -128,7 +130,7 @@ const About = () => {
             className="flex-1 grid grid-cols-2 gap-6 relative"
           >
             <div className="absolute inset-0 bg-gradient-to-tr from-orange-500/10 to-rose-500/10 rounded-[3rem] blur-3xl -z-10"></div>
-            <img src="https://images.unsplash.com/photo-1605478822483-31e7a9bcf9b4?auto=format&fit=crop&q=80&w=500" alt="chef" className="rounded-[2rem] h-72 w-full object-cover shadow-xl hover:-translate-y-2 transition-transform duration-500" />
+            <img src="https://images.unsplash.com/photo-1581349485608-9469926a8e5e?auto=format&fit=crop&q=80&w=500" alt="chef" className="rounded-[2rem] h-72 w-full object-cover shadow-xl hover:-translate-y-2 transition-transform duration-500" />
             <img src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&q=80&w=500" alt="salad" className="rounded-[2rem] h-72 w-full object-cover shadow-xl hover:-translate-y-2 transition-transform duration-500 mt-12" />
             <img src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?auto=format&fit=crop&q=80&w=500" alt="pizza" className="rounded-[2rem] h-72 w-full object-cover shadow-xl hover:-translate-y-2 transition-transform duration-500 -mt-12" />
             <img src="https://images.unsplash.com/photo-1631515243349-e0cb75fb8d3a?auto=format&fit=crop&q=80&w=500" alt="biryani" className="rounded-[2rem] h-72 w-full object-cover shadow-xl hover:-translate-y-2 transition-transform duration-500" />

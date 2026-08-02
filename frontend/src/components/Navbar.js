@@ -51,7 +51,13 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
         {/* Logo */}
         <div 
-          onClick={() => navigate("/")}
+          onClick={() => {
+            if (location.pathname === "/") {
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            } else {
+              navigate("/");
+            }
+          }}
           className="cursor-pointer group flex items-center gap-2"
         >
           <img
@@ -67,6 +73,12 @@ const Navbar = () => {
             <li key={link.name}>
               <NavLink 
                 to={link.path} 
+                onClick={(e) => {
+                  if (location.pathname === link.path) {
+                    e.preventDefault();
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                  }
+                }}
                 className={({ isActive }) => `
                   relative font-medium text-[15px] transition-colors duration-300
                   ${isActive 

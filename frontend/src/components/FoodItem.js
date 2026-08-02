@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { assets } from '../assets/frontend_assets/assets';
+
 import { StoreContext } from '../context/StoreContext';
 import { motion, AnimatePresence } from 'framer-motion';
 

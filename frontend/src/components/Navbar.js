@@ -5,7 +5,7 @@ import { StoreContext } from "../context/StoreContext";
 import { motion, AnimatePresence } from "framer-motion";
 
 const Navbar = () => {
-  const { login, setlogin, token, setToken } = useContext(StoreContext);
+  const { setlogin, token, setToken } = useContext(StoreContext);
   const navigate = useNavigate();
   const location = useLocation();
   const [isMenuVisible, setIsMenuVisible] = useState(false);

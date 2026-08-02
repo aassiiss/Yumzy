@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { StoreContext } from "../context/StoreContext";
-import { assets } from "../assets/frontend_assets/assets";
+
 import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 

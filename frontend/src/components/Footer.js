@@ -30,7 +30,7 @@ const Footer = () => {
             
             <div className='flex gap-4'>
               {['twitter_icon', 'facebook_icon', 'linkedin_icon'].map((icon, idx) => (
-                <a key={idx} href="#" className='w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-orange-500 hover:text-white transition-all duration-300 transform hover:-translate-y-1'>
+                <a key={idx} href="#/" className='w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-orange-500 hover:text-white transition-all duration-300 transform hover:-translate-y-1'>
                   {assets[icon] ? (
                     <img src={assets[icon]} alt='Social' className='w-4 h-4 brightness-0 invert' />
                   ) : (

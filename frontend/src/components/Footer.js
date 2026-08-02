@@ -51,9 +51,6 @@ const Footer = () => {
             <h4 className='text-white font-outfit font-semibold text-lg tracking-wide'>Company</h4>
             <div className='flex flex-col gap-4 font-inter text-[15px]'>
               <Link to="/about" className='text-slate-400 hover:text-orange-500 transition-colors w-max'>About Us</Link>
-              <a href="#" className='text-slate-400 hover:text-orange-500 transition-colors w-max'>Careers</a>
-              <a href="#" className='text-slate-400 hover:text-orange-500 transition-colors w-max'>Press & Media</a>
-              <a href="#" className='text-slate-400 hover:text-orange-500 transition-colors w-max'>Blog</a>
             </div>
           </div>
 
@@ -61,9 +58,6 @@ const Footer = () => {
             <h4 className='text-white font-outfit font-semibold text-lg tracking-wide'>Discover</h4>
             <div className='flex flex-col gap-4 font-inter text-[15px]'>
               <Link to="/menu" className='text-slate-400 hover:text-orange-500 transition-colors w-max'>Our Menu</Link>
-              <a href="#" className='text-slate-400 hover:text-orange-500 transition-colors w-max'>Top Rated</a>
-              <a href="#" className='text-slate-400 hover:text-orange-500 transition-colors w-max'>New Arrivals</a>
-              <a href="#" className='text-slate-400 hover:text-orange-500 transition-colors w-max'>Gift Cards</a>
             </div>
           </div>
 
@@ -71,9 +65,7 @@ const Footer = () => {
             <h4 className='text-white font-outfit font-semibold text-lg tracking-wide'>Support</h4>
             <div className='flex flex-col gap-4 font-inter text-[15px]'>
               <Link to="/contact" className='text-slate-400 hover:text-orange-500 transition-colors w-max'>Contact Us</Link>
-              <a href="#" className='text-slate-400 hover:text-orange-500 transition-colors w-max'>Help Center</a>
-              <a href="#" className='text-slate-400 hover:text-orange-500 transition-colors w-max'>Delivery Details</a>
-              <a href="#" className='text-slate-400 hover:text-orange-500 transition-colors w-max'>Track Order</a>
+              <Link to="/myorders" className='text-slate-400 hover:text-orange-500 transition-colors w-max'>Track Order</Link>
             </div>
           </div>
 
@@ -82,8 +74,6 @@ const Footer = () => {
             <div className='flex flex-col gap-4 font-inter text-[15px]'>
               <Link to="/terms" className='text-slate-400 hover:text-orange-500 transition-colors w-max'>Terms of Service</Link>
               <Link to="/privacy" className='text-slate-400 hover:text-orange-500 transition-colors w-max'>Privacy Policy</Link>
-              <a href="#" className='text-slate-400 hover:text-orange-500 transition-colors w-max'>Cookie Policy</a>
-              <a href="#" className='text-slate-400 hover:text-orange-500 transition-colors w-max'>Compliance</a>
             </div>
           </div>
         </div>

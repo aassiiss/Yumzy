@@ -9,24 +9,25 @@ const FoodDisplay = ({ category }) => {
 
   return (
     <div className='py-8' id='FoodDisplay'>
-      <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+      <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10">
         <div>
           <motion.h2 
             key={category}
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            className='text-3xl md:text-5xl font-outfit font-bold text-slate-900 tracking-tight'
+            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            className='text-2xl md:text-3xl font-outfit font-medium text-surface-900 tracking-tight'
           >
-            {category === "All" ? "Top Selections" : `${category}`}
+            {category === "All" ? "All items" : category}
           </motion.h2>
           <motion.p 
             key={`${category}-count`}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 0.1 }}
-            className="text-slate-500 mt-3 text-[15px] font-inter"
+            transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+            className="text-surface-500 mt-2 text-[14px] font-inter"
           >
-            {filtered.length} {filtered.length === 1 ? 'dish' : 'dishes'} available
+            {filtered.length} {filtered.length === 1 ? 'result' : 'results'}
           </motion.p>
         </div>
       </div>
@@ -34,19 +35,19 @@ const FoodDisplay = ({ category }) => {
       <AnimatePresence mode='wait'>
         {filtered.length === 0 ? (
           <motion.div 
-            initial={{ opacity: 0, scale: 0.9 }}
+            initial={{ opacity: 0, scale: 0.98 }}
             animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.9 }}
-            className="flex flex-col items-center justify-center py-32 text-slate-400 bg-white rounded-[3rem] border border-slate-100 shadow-sm"
+            exit={{ opacity: 0, scale: 0.98 }}
+            transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+            className="flex flex-col items-center justify-center py-32 bg-white rounded-2xl border border-surface-200/50 shadow-sm"
           >
-            <span className="text-8xl mb-6 opacity-50 grayscale">🍽️</span>
-            <p className="text-2xl font-outfit font-bold text-slate-700">No dishes found</p>
-            <p className="text-[15px] mt-2 font-inter">Try selecting a different category</p>
+            <p className="text-xl font-outfit font-medium text-surface-900">No items found</p>
+            <p className="text-[14px] mt-2 font-inter text-surface-500">Select a different category to view more options.</p>
           </motion.div>
         ) : (
           <motion.div 
             layout
-            className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-8 gap-y-12'
+            className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-6 gap-y-10'
           >
             <AnimatePresence>
               {filtered.map((item) => (

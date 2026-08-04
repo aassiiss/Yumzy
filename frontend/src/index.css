@@ -8,12 +8,12 @@
   }
   
   body {
-    @apply font-inter bg-surface-50 text-slate-900;
+    @apply font-inter bg-surface-50 text-surface-900;
     min-height: 100vh;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-outfit font-semibold tracking-tight;
+    @apply font-outfit font-medium tracking-tight;
   }
 }
 
@@ -23,7 +23,7 @@
   }
   
   .glass-dark {
-    @apply bg-slate-900/80 backdrop-blur-lg border border-white/10 shadow-glass text-white;
+    @apply bg-surface-900/80 backdrop-blur-lg border border-white/10 shadow-glass text-white;
   }
   
   .text-gradient {
@@ -51,17 +51,17 @@ input[type="number"] {
 
 /* Custom premium scrollbar for the main window */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #f1f5f9;
+  background: #f4f4f5;
 }
 ::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
-  border-radius: 4px;
+  background: #d4d4d8;
+  border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #94a3b8;
+  background: #a1a1aa;
 }
 
 .spinner {

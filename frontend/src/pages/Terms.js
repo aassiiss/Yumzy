@@ -3,8 +3,8 @@ import { motion } from 'framer-motion';
 
 const Terms = () => {
   const fadeInUp = {
-    hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } }
   };
 
   const sections = [
@@ -31,11 +31,9 @@ const Terms = () => {
   ];
 
   return (
-    <div className="min-h-screen pt-32 pb-24 bg-white relative overflow-hidden">
+    <div className="min-h-screen pt-32 pb-24 bg-surface-50">
       
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-slate-50 rounded-full blur-[100px] pointer-events-none transform translate-x-1/2 -translate-y-1/2"></div>
-      
-      <div className="max-w-[800px] mx-auto px-6 relative z-10">
+      <div className="max-w-[800px] mx-auto px-6 lg:px-8">
         
         <motion.div 
           initial="hidden"
@@ -44,17 +42,20 @@ const Terms = () => {
             hidden: { opacity: 0 },
             visible: { opacity: 1, transition: { staggerChildren: 0.1 } }
           }}
-          className="mb-16 text-center"
+          className="mb-16"
         >
-          <motion.span variants={fadeInUp} className="inline-block bg-slate-50 border border-slate-200 text-slate-500 text-xs font-bold px-5 py-2 rounded-full uppercase tracking-widest font-outfit mb-6">
-            Legal & Compliance
+          <motion.span variants={fadeInUp} className="text-[12px] font-inter font-medium text-surface-500 uppercase tracking-wider mb-4 block">
+            Legal
           </motion.span>
-          <motion.h1 variants={fadeInUp} className="text-4xl md:text-5xl font-outfit font-bold text-slate-900 tracking-tight mb-6">
+          <motion.h1 variants={fadeInUp} className="text-[40px] md:text-[56px] font-outfit font-medium text-surface-900 tracking-tight mb-6 leading-[1.1]">
             Terms of Service
           </motion.h1>
-          <motion.p variants={fadeInUp} className="text-slate-500 font-inter text-[15px]">
-            Last updated: August 1, 2026
+          <motion.p variants={fadeInUp} className="text-surface-500 font-inter text-lg leading-relaxed font-light">
+            These terms govern your use of the Yumzy platform and services.
           </motion.p>
+          <motion.div variants={fadeInUp} className="flex gap-6 mt-6 border-t border-surface-200/60 pt-6 text-[13px] font-inter text-surface-500">
+            <span>Last updated: August 1, 2026</span>
+          </motion.div>
         </motion.div>
 
         <motion.div 
@@ -64,25 +65,25 @@ const Terms = () => {
             hidden: { opacity: 0 },
             visible: { opacity: 1, transition: { staggerChildren: 0.1, delayChildren: 0.2 } }
           }}
-          className="space-y-12"
+          className="bg-white rounded-3xl p-8 md:p-12 border border-surface-200/60 shadow-sm space-y-12"
         >
           {sections.map((section, idx) => (
             <motion.section key={idx} variants={fadeInUp} className="group">
-              <h2 className="text-xl font-outfit font-bold text-slate-900 mb-4 group-hover:text-orange-500 transition-colors">
+              <h2 className="text-[20px] font-outfit font-medium text-surface-900 mb-4 tracking-tight">
                 {section.title}
               </h2>
-              <p className="text-slate-600 font-inter text-[15px] leading-relaxed">
+              <p className="text-surface-600 font-inter text-[15px] leading-relaxed">
                 {section.content}
               </p>
             </motion.section>
           ))}
           
-          <motion.section variants={fadeInUp} className="pt-8 border-t border-slate-100">
-            <h2 className="text-xl font-outfit font-bold text-slate-900 mb-4">
+          <motion.section variants={fadeInUp} className="pt-8 border-t border-surface-200/60">
+            <h2 className="text-[20px] font-outfit font-medium text-surface-900 mb-4 tracking-tight">
               Questions?
             </h2>
-            <p className="text-slate-600 font-inter text-[15px] leading-relaxed">
-              If you have any questions about these Terms, please contact us at <a href="mailto:legal@yumzy.com" className="text-orange-500 font-medium hover:underline">legal@yumzy.com</a>.
+            <p className="text-surface-600 font-inter text-[15px] leading-relaxed">
+              If you have any questions about these Terms, please contact us at <a href="mailto:legal@yumzy.com" className="text-surface-900 font-medium hover:underline">legal@yumzy.com</a>.
             </p>
           </motion.section>
         </motion.div>

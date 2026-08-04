@@ -22,20 +22,26 @@ const FloatingCart = () => {
         initial={{ y: 100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         exit={{ y: 100, opacity: 0 }}
-        className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 w-[90%] max-w-[400px]"
+        transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+        className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 w-[90%] max-w-[360px]"
       >
         <div 
           onClick={() => navigate('/cart')}
-          className="bg-orange-500 text-white rounded-2xl p-4 flex items-center justify-between shadow-[0_15px_40px_-10px_rgba(249,115,22,0.8)] cursor-pointer hover:bg-orange-600 hover:-translate-y-1 transition-all duration-300 border border-orange-400/50"
+          className="bg-surface-900/95 backdrop-blur-xl text-white rounded-full px-6 py-4 flex items-center justify-between shadow-premium cursor-pointer hover:bg-surface-800 transition-all duration-300 border border-surface-700/50"
         >
-          <div className="flex flex-col">
-            <span className="text-[13px] font-medium text-orange-100 uppercase tracking-wider">{totalItems} {totalItems === 1 ? 'Item' : 'Items'}</span>
-            <span className="font-outfit font-bold text-[18px]">₹{amount}</span>
+          <div className="flex items-center gap-3">
+            <div className="bg-white/10 w-9 h-9 rounded-full flex items-center justify-center text-[13px] font-medium">
+              {totalItems}
+            </div>
+            <div className="flex flex-col">
+              <span className="text-[11px] font-medium text-surface-400 uppercase tracking-wider">Subtotal</span>
+              <span className="font-inter font-medium text-[15px]">₹{amount}</span>
+            </div>
           </div>
-          <div className="flex items-center gap-2 font-bold font-outfit text-[17px]">
-            View Cart
-            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+          <div className="flex items-center gap-2 font-medium font-inter text-[14px]">
+            Checkout
+            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
             </svg>
           </div>
         </div>

@@ -1,14 +1,13 @@
-import React, { useEffect, useState } from 'react'
-import { useContext } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import axios from 'axios'
 import { StoreContext } from '../context/StoreContext'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useNavigate } from 'react-router-dom'
 
 const statusColors = {
-  'Food Processing': 'bg-amber-100 text-amber-700 border-amber-200',
-  'Out for Delivery': 'bg-blue-100 text-blue-700 border-blue-200',
-  'Delivered': 'bg-emerald-100 text-emerald-700 border-emerald-200',
+  'Food Processing': 'bg-surface-200 text-surface-700 border-surface-300',
+  'Out for Delivery': 'bg-blue-50 text-blue-700 border-blue-200',
+  'Delivered': 'bg-green-50 text-green-700 border-green-200',
 };
 
 const MyOrders = () => {
@@ -47,24 +46,25 @@ const MyOrders = () => {
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    show: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 300, damping: 24 } }
+    hidden: { opacity: 0, y: 10 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] } }
   };
 
   return (
-    <div className='min-h-screen pt-32 pb-24 max-w-[1200px] mx-auto px-6 lg:px-8 bg-surface-50'>
+    <div className='min-h-screen pt-32 pb-24 max-w-[1000px] mx-auto px-6 lg:px-8 bg-surface-50'>
       <motion.div
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
         className="flex items-center justify-between mb-12"
       >
-        <h1 className="text-4xl md:text-5xl font-outfit font-bold text-slate-900 tracking-tight">
-          My <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-rose-500">Orders</span>
+        <h1 className="text-[32px] md:text-[40px] font-outfit font-medium text-surface-900 tracking-tight">
+          Order history
         </h1>
         
         <button 
           onClick={fetchOrders}
-          className="flex items-center gap-2 text-[14px] font-inter font-medium text-slate-500 hover:text-orange-500 transition-colors bg-white px-4 py-2 rounded-full border border-slate-200 shadow-sm hover:shadow-md"
+          className="flex items-center gap-2 text-[13px] font-inter font-medium text-surface-500 hover:text-surface-900 transition-colors bg-white px-4 py-2 rounded-full border border-surface-200 shadow-sm"
         >
           <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
@@ -82,30 +82,32 @@ const MyOrders = () => {
             exit={{ opacity: 0 }}
             className="flex flex-col items-center justify-center py-32"
           >
-            <div className="relative w-16 h-16">
-              <div className="absolute inset-0 border-4 border-slate-100 rounded-full"></div>
-              <div className="absolute inset-0 border-4 border-orange-500 rounded-full border-t-transparent animate-spin"></div>
+            <div className="relative w-12 h-12">
+              <div className="absolute inset-0 border-2 border-surface-200 rounded-full"></div>
+              <div className="absolute inset-0 border-2 border-surface-900 rounded-full border-t-transparent animate-spin"></div>
             </div>
-            <p className="mt-6 text-slate-500 font-inter text-[15px]">Fetching your orders...</p>
           </motion.div>
         ) : data.length === 0 ? (
           <motion.div 
             key="empty"
-            initial={{ opacity: 0, scale: 0.95 }}
+            initial={{ opacity: 0, scale: 0.98 }}
             animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.95 }}
-            className="flex flex-col items-center justify-center py-32 bg-white rounded-[3rem] shadow-sm border border-slate-100"
+            exit={{ opacity: 0, scale: 0.98 }}
+            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+            className="flex flex-col items-center justify-center py-24 bg-white rounded-3xl shadow-sm border border-surface-200/50"
           >
-            <div className="w-32 h-32 bg-slate-50 rounded-full flex items-center justify-center mb-8">
-              <span className="text-6xl opacity-50 grayscale">🧾</span>
+            <div className="w-20 h-20 bg-surface-50 rounded-full flex items-center justify-center mb-6 border border-surface-100">
+              <svg className="w-8 h-8 text-surface-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+              </svg>
             </div>
-            <p className="text-3xl font-outfit font-bold text-slate-800 mb-2">No orders yet</p>
-            <p className="text-slate-500 font-inter mb-8">Looks like you haven't placed any orders yet.</p>
+            <p className="text-xl font-outfit font-medium text-surface-900 mb-2">No orders yet</p>
+            <p className="text-surface-500 font-inter text-[14px] mb-8">When you place an order, it will appear here.</p>
             <button 
               onClick={() => navigate("/menu")} 
-              className="bg-slate-900 text-white px-8 py-4 rounded-full font-outfit font-bold text-[15px] shadow-[0_10px_20px_rgba(0,0,0,0.1)] hover:shadow-[0_15px_30px_rgba(0,0,0,0.2)] hover:-translate-y-1 transition-all duration-300"
+              className="bg-surface-900 text-white px-6 py-3 rounded-xl font-inter font-medium text-[14px] hover:bg-surface-800 transition-colors shadow-sm"
             >
-              Start Ordering
+              Browse menu
             </button>
           </motion.div>
         ) : (
@@ -114,20 +116,22 @@ const MyOrders = () => {
             variants={containerVariants}
             initial="hidden"
             animate="show"
-            className='flex flex-col gap-6'
+            className='flex flex-col gap-4'
           >
             {data.map((order, index) => (
               <motion.div 
                 variants={itemVariants}
                 key={index} 
-                className='bg-white rounded-[2rem] p-6 md:p-8 shadow-sm border border-slate-100 hover:shadow-premium transition-all duration-300 flex flex-col md:flex-row items-start md:items-center gap-6 relative overflow-hidden group'
+                className='bg-white rounded-2xl p-6 shadow-sm border border-surface-200/60 hover:shadow-premium transition-all duration-300 flex flex-col md:flex-row md:items-center gap-6 group'
               >
-                <div className="w-16 h-16 bg-gradient-to-br from-orange-50 to-rose-50 rounded-2xl flex items-center justify-center flex-shrink-0 text-3xl shadow-inner border border-orange-100/50 group-hover:scale-110 transition-transform duration-300">
-                  📦
+                <div className="w-12 h-12 bg-surface-50 rounded-xl flex items-center justify-center flex-shrink-0 border border-surface-200">
+                  <svg className="w-5 h-5 text-surface-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                  </svg>
                 </div>
                 
                 <div className='flex-1 min-w-0'>
-                  <p className='font-outfit font-bold text-[17px] text-slate-900 leading-relaxed truncate'>
+                  <p className='font-inter font-medium text-[15px] text-surface-900 leading-snug truncate mb-1.5'>
                     {order.items.map((item, i) => (
                       i === order.items.length - 1
                         ? `${item.name} ×${item.quantity}`
@@ -135,16 +139,12 @@ const MyOrders = () => {
                     ))}
                   </p>
                   
-                  <div className="flex flex-wrap items-center gap-4 mt-3 font-inter text-[14px]">
-                    <span className="flex items-center gap-1.5 text-slate-500 bg-slate-50 px-3 py-1 rounded-lg border border-slate-100">
-                      <span className="text-lg">🛍️</span>
-                      {order.items.length} {order.items.length === 1 ? 'item' : 'items'}
-                    </span>
-                    <span className="flex items-center gap-1.5 text-slate-900 font-bold bg-orange-50 px-3 py-1 rounded-lg border border-orange-100/50">
-                      <span className="text-lg">💰</span>
-                      ₹{order.amount}
-                    </span>
-                    <span className="text-slate-400 text-sm hidden sm:block">
+                  <div className="flex items-center gap-3 font-inter text-[13px] text-surface-500">
+                    <span>{order.items.length} {order.items.length === 1 ? 'item' : 'items'}</span>
+                    <span className="w-1 h-1 rounded-full bg-surface-300"></span>
+                    <span className="font-medium text-surface-900">₹{order.amount}</span>
+                    <span className="w-1 h-1 rounded-full bg-surface-300 hidden sm:block"></span>
+                    <span className="hidden sm:block">
                       {new Date(order.date).toLocaleDateString('en-IN', {
                         day: 'numeric',
                         month: 'short',
@@ -154,20 +154,20 @@ const MyOrders = () => {
                   </div>
                 </div>
                 
-                <div className="flex flex-row md:flex-col lg:flex-row items-center gap-4 w-full md:w-auto mt-4 md:mt-0 justify-between md:justify-end border-t md:border-t-0 border-slate-100 pt-4 md:pt-0">
-                  <div className={`px-4 py-1.5 rounded-full text-[13px] font-bold border flex items-center gap-2 shadow-sm ${statusColors[order.status] || 'bg-slate-50 text-slate-600 border-slate-200'}`}>
-                    <span className="relative flex h-2 w-2">
-                      {order.status !== 'Delivered' && (
+                <div className="flex items-center gap-4 w-full md:w-auto justify-between md:justify-end border-t md:border-t-0 border-surface-100 pt-4 md:pt-0">
+                  <div className={`px-3 py-1.5 rounded-full text-[12px] font-medium border flex items-center gap-2 ${statusColors[order.status] || 'bg-surface-50 text-surface-600 border-surface-200'}`}>
+                    {order.status !== 'Delivered' && (
+                      <span className="relative flex h-1.5 w-1.5">
                         <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-current opacity-40"></span>
-                      )}
-                      <span className="relative inline-flex rounded-full h-2 w-2 bg-current"></span>
-                    </span>
+                        <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-current"></span>
+                      </span>
+                    )}
                     {order.status}
                   </div>
                   
                   <button
                     onClick={fetchOrders}
-                    className='bg-slate-900 hover:bg-orange-500 text-white text-[14px] font-outfit font-bold px-6 py-2.5 rounded-xl transition-colors flex-shrink-0 shadow-md hover:shadow-lg'
+                    className='bg-white border border-surface-200 text-surface-900 text-[13px] font-inter font-medium px-4 py-2 rounded-lg hover:bg-surface-50 transition-colors shrink-0'
                   >
                     Track
                   </button>

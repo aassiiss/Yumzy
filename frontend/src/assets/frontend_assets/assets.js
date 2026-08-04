@@ -40,6 +40,20 @@ import headerBI from './headerBI.jpg'
 import aashish from './aashish.png'
 import nimish from './nimish.png'
 import shreeji from './shreeji.png'
+
+import food_1 from './food_1.png'
+import food_2 from './food_2.png'
+import food_3 from './food_3.png'
+import food_4 from './food_4.png'
+import food_5 from './food_5.png'
+import food_6 from './food_6.png'
+import food_7 from './food_7.png'
+import food_8 from './food_8.png'
+import food_9 from './food_9.png'
+import food_10 from './food_10.png'
+import food_11 from './food_11.png'
+import food_12 from './food_12.png'
+
 export const assets = {
     logo,
     basket_icon,
@@ -134,98 +148,98 @@ export const menu_list = [
 export const food_list = [
     {
         _id: "1",
-        name: "Mediterranean Salad",
-        image: "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&q=80&w=800",
-        price: 18,
+        name: "Mediterranean Greek Salad",
+        image: food_1,
+        price: 350,
         description: "Crisp greens, kalamata olives, and feta cheese drizzled with our signature olive oil vinaigrette.",
         category: "Salads"
     },
     {
         _id: "2",
-        name: "Truffle Glazed Burger",
-        image: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&q=80&w=800",
-        price: 24,
-        description: "Wagyu beef patty topped with melted gruyere, caramelized onions, and house-made truffle aioli.",
-        category: "Non-Vegetarian Specialties"
+        name: "Truffle Veg Salad",
+        image: food_2,
+        price: 450,
+        description: "Fresh organic vegetables topped with a light truffle glaze and crushed walnuts.",
+        category: "Salads"
     },
     {
         _id: "3",
-        name: "Artisan Margherita",
-        image: "https://images.unsplash.com/photo-1574071318508-1cdbab80d002?auto=format&fit=crop&q=80&w=800",
-        price: 22,
-        description: "Wood-fired crust with San Marzano tomatoes, fresh mozzarella, and aromatic basil leaves.",
-        category: "Vegetarian Delights"
+        name: "Artisan Clover Salad",
+        image: food_3,
+        price: 550,
+        description: "Crisp radicchio leaves tossed with premium blue cheese and candied walnuts.",
+        category: "Salads"
     },
     {
         _id: "4",
-        name: "Spicy Tuna Roll",
-        image: "https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&q=80&w=800",
-        price: 20,
-        description: "Fresh yellowfin tuna, spicy mayo, and crisp cucumber wrapped in premium nori.",
-        category: "Rolls"
+        name: "Grilled Chicken Salad",
+        image: food_4,
+        price: 650,
+        description: "Grilled chicken breast, halloumi cheese, and fresh tomatoes over a bed of crisp greens.",
+        category: "Salads"
     },
     {
         _id: "5",
-        name: "Berry Velvet Cake",
-        image: "https://images.unsplash.com/photo-1565958011703-44f9829ba187?auto=format&fit=crop&q=80&w=800",
-        price: 16,
-        description: "Decadent layers of red velvet and mixed berry compote, finished with cream cheese frosting.",
-        category: "Cake"
+        name: "Baked Lasagna Rolls",
+        image: food_5,
+        price: 250,
+        description: "Decadent lasagna sheets rolled with ricotta and spinach, baked in rich marinara.",
+        category: "Rolls"
     },
     {
         _id: "6",
-        name: "Hyderabadi Dum Biryani",
-        image: "https://images.unsplash.com/photo-1631515243349-e0cb75fb8d3a?auto=format&fit=crop&q=80&w=800",
-        price: 28,
-        description: "Aromatic basmati rice slow-cooked with tender chicken and exotic saffron spices.",
-        category: "Biriyani"
+        name: "Peri Peri Chicken Rolls",
+        image: food_6,
+        price: 380,
+        description: "Spicy peri-peri chicken chunks wrapped in a soft, freshly baked flatbread.",
+        category: "Rolls"
     },
     {
         _id: "7",
-        name: "Crispy Garlic Bread",
-        image: "https://images.unsplash.com/photo-1573140247632-f8fd74997d5c?auto=format&fit=crop&q=80&w=800",
-        price: 10,
-        description: "Artisanal baguette slices toasted with roasted garlic butter and parmesan cheese.",
-        category: "Breads"
+        name: "Classic Chicken Rolls",
+        image: food_7,
+        price: 150,
+        description: "Tender shredded chicken and fresh veggies tightly rolled and grilled to perfection.",
+        category: "Rolls"
     },
     {
         _id: "8",
-        name: "Paneer Butter Masala",
-        image: "https://images.unsplash.com/photo-1631452180519-c014fe946bc0?auto=format&fit=crop&q=80&w=800",
-        price: 22,
-        description: "Cottage cheese cubes simmered in a rich, creamy tomato and cashew curry.",
-        category: "Paneer"
+        name: "Spiced Veg Rolls",
+        image: food_8,
+        price: 320,
+        description: "A delicious blend of spiced vegetables wrapped in a crispy, golden-brown crust.",
+        category: "Rolls"
     },
     {
         _id: "9",
-        name: "Kung Pao Chicken",
-        image: "https://images.unsplash.com/photo-1525755662778-989d0524087e?auto=format&fit=crop&q=80&w=800",
-        price: 26,
-        description: "Classic Chinese wok-tossed chicken with peanuts, vegetables, and spicy chili peppers.",
-        category: "Chineese"
+        name: "Artisan Ripple Ice Cream",
+        image: food_9,
+        price: 420,
+        description: "Creamy vanilla base with rich chocolate and caramel ripples.",
+        category: "Desserts"
     },
     {
         _id: "10",
-        name: "Mango Mojito",
-        image: "https://images.unsplash.com/photo-1536935338788-846bb9981813?auto=format&fit=crop&q=80&w=800",
-        price: 12,
-        description: "Refreshing blend of fresh mango puree, mint leaves, and sparkling water.",
-        category: "Drinks"
+        name: "Fresh Fruit Ice Cream",
+        image: food_10,
+        price: 180,
+        description: "Refreshing blend of seasonal fruits churned into a rich, creamy gelato.",
+        category: "Desserts"
     },
     {
         _id: "11",
-        name: "Grilled Chicken Sandwich",
-        image: "https://images.unsplash.com/photo-1528735602780-2552fd46c7af?auto=format&fit=crop&q=80&w=800",
-        price: 18,
-        description: "Juicy grilled chicken breast with avocado and aioli on toasted artisanal sourdough.",
-        category: "Sandwiches"
+        name: "Gourmet Jar Ice Cream",
+        image: food_11,
+        price: 280,
+        description: "Decadent layered ice cream served in a reusable artisanal glass jar.",
+        category: "Desserts"
     },
     {
         _id: "12",
-        name: "Chocolate Lava Dessert",
-        image: "https://images.unsplash.com/photo-1624353365286-3f8d62daad51?auto=format&fit=crop&q=80&w=800",
-        price: 15,
-        description: "Warm chocolate cake with a gooey molten center, served with vanilla bean ice cream.",
+        name: "Classic Vanilla Ice Cream",
+        image: food_12,
+        price: 220,
+        description: "The timeless classic, made with authentic Madagascar vanilla beans.",
         category: "Desserts"
     }
 ];

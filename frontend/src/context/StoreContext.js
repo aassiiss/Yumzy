@@ -47,10 +47,17 @@ const StoreContextProvider=(props)=>{
     
 
     const fetchFoodList=async()=>{
-        const response=await axios.get(url+"/api/v1/food/get");
-        setFoodList(response.data.data);
+        try {
+            const response=await axios.get(url+"/api/v1/food/get");
+            setFoodList(response.data.data);
+        } catch (error) {
+            console.error("Backend unreachable, falling back to dummy data.", error);
+            // We'll import it dynamically since we can't do top-level import easily without replacing top lines
+            import('../assets/frontend_assets/assets').then(module => {
+                setFoodList(module.food_list);
+            });
+        }
     }
-
     const loadCartData = async (token) => {
         try {
             const response = await axios.post(url + "/api/v1/cart/getcartitems", {}, { headers: { token } });

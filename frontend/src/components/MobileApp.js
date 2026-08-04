@@ -21,7 +21,7 @@ const MobileApp = () => {
             className='inline-flex items-center gap-2 px-5 py-2 rounded-full bg-white/10 border border-white/10 text-orange-300 text-sm font-medium w-max backdrop-blur-sm'
           >
             <span className="w-2 h-2 rounded-full bg-orange-400 animate-pulse"></span>
-            Now Available on iOS & Android
+            Coming soon to iOS & Android
           </motion.div>
 
           <motion.h2 

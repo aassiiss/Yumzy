@@ -19,9 +19,7 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const toggleMenuVisibility = () => {
-    setIsMenuVisible(!isMenuVisible);
-  };
+  const toggleMenuVisibility = () => setIsMenuVisible(!isMenuVisible);
 
   const logout = () => {
     localStorage.removeItem("token");
@@ -43,32 +41,31 @@ const Navbar = () => {
     <motion.nav 
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      transition={{ type: "spring", stiffness: 100, damping: 20 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? "bg-white/85 backdrop-blur-xl shadow-premium border-b border-gray-100 py-3" : "bg-transparent py-5"
+      transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        scrolled 
+          ? "bg-white/80 backdrop-blur-2xl shadow-[0_1px_3px_rgba(0,0,0,0.02)] border-b border-surface-200/60 py-3" 
+          : "bg-transparent py-6"
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
         {/* Logo */}
         <div 
           onClick={() => {
-            if (location.pathname === "/") {
-              window.scrollTo({ top: 0, behavior: 'smooth' });
-            } else {
-              navigate("/");
-            }
+            if (location.pathname === "/") window.scrollTo({ top: 0, behavior: 'smooth' });
+            else navigate("/");
           }}
           className="cursor-pointer group flex items-center gap-2"
         >
           <img
             src={assets.logo}
             alt="Yumzy Logo"
-            className={`w-32 md:w-36 transition-all duration-300 group-hover:scale-105 ${useLightText ? "brightness-0 invert opacity-100" : ""}`}
+            className={`w-32 transition-all duration-500 ${useLightText ? "brightness-0 invert opacity-100" : "opacity-90 group-hover:opacity-100"}`}
           />
         </div>
 
         {/* Desktop Links */}
-        <ul className="hidden md:flex items-center gap-10">
+        <ul className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
             <li key={link.name}>
               <NavLink 
@@ -80,33 +77,33 @@ const Navbar = () => {
                   }
                 }}
                 className={({ isActive }) => `
-                  relative font-medium text-[15px] transition-colors duration-300
+                  relative font-inter text-[14px] font-medium transition-colors duration-300
                   ${isActive 
-                    ? (useLightText ? "text-orange-400 font-semibold" : "text-orange-600 font-semibold") 
-                    : (useLightText ? "text-slate-300 hover:text-white" : "text-gray-600 hover:text-orange-500")}
+                    ? (useLightText ? "text-white" : "text-surface-900") 
+                    : (useLightText ? "text-white/70 hover:text-white" : "text-surface-500 hover:text-surface-900")}
                 `}
               >
                 {link.name}
                 {location.pathname === link.path && (
                   <motion.div
                     layoutId="navbar-indicator"
-                    className="absolute -bottom-1.5 left-0 right-0 h-0.5 bg-orange-500 rounded-full"
+                    className={`absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full ${useLightText ? "bg-white" : "bg-surface-900"}`}
                     initial={false}
-                    transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                    transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
                   />
                 )}
               </NavLink>
             </li>
           ))}
           <li>
-            <a href="#Contact" className={`font-medium text-[15px] transition-colors duration-300 ${useLightText ? "text-slate-300 hover:text-white" : "text-gray-600 hover:text-orange-500"}`}>
+            <a href="#Contact" className={`font-inter text-[14px] font-medium transition-colors duration-300 ${useLightText ? "text-white/70 hover:text-white" : "text-surface-500 hover:text-surface-900"}`}>
               Contact
             </a>
           </li>
         </ul>
 
         {/* Right Actions */}
-        <div className="flex items-center gap-5 md:gap-7 relative">
+        <div className="flex items-center gap-4 relative">
           
           {/* Cart Icon */}
           <button 
@@ -114,11 +111,13 @@ const Navbar = () => {
               if (token) navigate("/cart");
               else { alert("Please sign in to access the cart."); setlogin(true); }
             }}
-            className={`relative p-2 rounded-full transition-colors ${useLightText ? "hover:bg-white/10" : "hover:bg-gray-100"}`}
+            className={`relative p-2.5 rounded-full transition-all duration-300 ${useLightText ? "hover:bg-white/10 text-white" : "hover:bg-surface-100 text-surface-900"}`}
           >
-            <img src={assets.basket_icon} alt="Cart" className={`w-6 h-6 opacity-80 ${useLightText ? "brightness-0 invert" : ""}`} />
+            <svg className="w-[20px] h-[20px]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+            </svg>
             {token && (
-              <span className="absolute top-1 right-1 w-2.5 h-2.5 bg-orange-500 rounded-full border-2 border-white"></span>
+              <span className="absolute top-2 right-2 w-2 h-2 bg-orange-500 rounded-full shadow-[0_0_0_2px_var(--bg-color)]" style={{'--bg-color': useLightText && !scrolled ? 'transparent' : 'white'}}></span>
             )}
           </button>
 
@@ -126,8 +125,10 @@ const Navbar = () => {
           {!token ? (
             <button
               onClick={() => setlogin(true)}
-              className={`hidden md:block font-medium px-6 py-2.5 rounded-full transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5 ${
-                useLightText ? "bg-white text-slate-900 hover:bg-orange-500 hover:text-white" : "bg-slate-900 text-white hover:bg-orange-500"
+              className={`hidden md:flex items-center justify-center font-inter text-[13px] font-semibold px-5 py-2 rounded-full transition-all duration-300 ${
+                useLightText 
+                  ? "bg-white text-surface-900 hover:bg-white/90 shadow-[0_0_15px_rgba(255,255,255,0.1)]" 
+                  : "bg-surface-900 text-white hover:bg-surface-800 shadow-premium"
               }`}
             >
               Sign In
@@ -136,41 +137,43 @@ const Navbar = () => {
             <div className="relative">
               <button 
                 onClick={toggleMenuVisibility}
-                className={`w-10 h-10 rounded-full flex items-center justify-center border-2 border-transparent hover:border-orange-200 transition-all focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 ${useLightText ? "bg-white/10 hover:bg-white/20" : "bg-slate-100"}`}
+                className={`w-9 h-9 rounded-full flex items-center justify-center border transition-all duration-300 focus:outline-none ${useLightText ? "border-white/20 hover:border-white/40 bg-white/10" : "border-surface-200 hover:border-surface-300 bg-surface-50"}`}
               >
-                <img
-                  src={assets.profile_icon}
-                  alt="Profile"
-                  className={`w-5 h-5 opacity-70 ${useLightText ? "brightness-0 invert" : ""}`}
-                />
+                <svg className={`w-4 h-4 ${useLightText ? "text-white" : "text-surface-700"}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                </svg>
               </button>
               
               <AnimatePresence>
                 {isMenuVisible && (
                   <motion.div 
-                    initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                    initial={{ opacity: 0, y: 8, scale: 0.96 }}
                     animate={{ opacity: 1, y: 0, scale: 1 }}
-                    exit={{ opacity: 0, y: 10, scale: 0.95 }}
-                    transition={{ duration: 0.15 }}
-                    className="absolute right-0 mt-3 w-48 bg-white rounded-2xl shadow-premium border border-gray-100 overflow-hidden py-2"
+                    exit={{ opacity: 0, y: 8, scale: 0.96 }}
+                    transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
+                    className="absolute right-0 mt-3 w-48 bg-white rounded-2xl shadow-[0_8px_30px_rgba(0,0,0,0.08)] border border-surface-100 overflow-hidden py-1.5 z-50"
                   >
-                    <div className="px-4 py-3 border-b border-gray-50 mb-2">
-                      <p className="text-sm font-semibold text-gray-900">My Account</p>
+                    <div className="px-4 py-2 border-b border-surface-50 mb-1.5">
+                      <p className="text-[11px] font-medium text-surface-400 uppercase tracking-wider">Account</p>
                     </div>
                     
                     <button
                       onClick={() => { setIsMenuVisible(false); navigate("/myorders"); }}
-                      className="w-full flex items-center gap-3 px-4 py-2.5 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-600 transition-colors"
+                      className="w-full flex items-center gap-3 px-4 py-2.5 text-[14px] font-inter text-surface-700 hover:bg-surface-50 transition-colors"
                     >
-                      <img src={assets.bag_icon} alt="Orders" className="w-4 h-4 opacity-70" />
+                      <svg className="w-4 h-4 text-surface-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                      </svg>
                       Order History
                     </button>
                     
                     <button
                       onClick={logout}
-                      className="w-full flex items-center gap-3 px-4 py-2.5 text-sm text-red-600 hover:bg-red-50 transition-colors"
+                      className="w-full flex items-center gap-3 px-4 py-2.5 text-[14px] font-inter text-red-600 hover:bg-red-50 transition-colors"
                     >
-                      <img src={assets.logout_icon} alt="Logout" className="w-4 h-4 opacity-70" />
+                      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+                      </svg>
                       Sign Out
                     </button>
                   </motion.div>
